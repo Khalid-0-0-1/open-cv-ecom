@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+    <div class="nav container">
+  <a href="" class="logo">Ecommerce</a>
+
+  <div class="nav-right">
+    <a href="login.html" class="btn-login">Admin Login</a>
+    <i class="bx bx-shopping-bag" id="cart-icon" data-quantity="0"></i>
+  </div>
+  <a href="login.html" class="admin-link admin-link-side" title="Admin">
+    <i class="bx bx-cog"></i>
+  </a>
+
+        <div class="cart">
+          <h2 class="cart-title">Your Cart</h2>
+          <div class="cart-content"></div>
+          <div class="total">
+            <div class="total-title">Total</div>
+            <div class="total-price">$0</div>
+          </div>
+          <button type="button" class="btn-buy">Pay Now</button>
+          <i class="bx bx-x" id="close-cart"></i>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Products -->
+    <section class="shop container">
+      <h2 class="section-title">Shop Products</h2>
+      <div class="shop-content" id="shop-content">
+        <!-- Products are loaded from products.json by main.js -->
+      </div>
+    </section>  
+
+    <script src="main.js"></script>
+  </body>
+</html>

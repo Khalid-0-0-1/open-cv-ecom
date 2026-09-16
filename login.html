@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="nav container">
+        <a href="index.html" class="logo">Ecommerce</a>
+      </div>
+    </header>
+
+    <section class="shop container">
+      <h2 class="section-title">Admin Login</h2>
+
+      <form id="login-form" class="admin-form" style="grid-template-columns: 1fr 1fr auto; max-width: 600px; margin: 0 auto;">
+        <input type="text" name="username" id="l-username" placeholder="Username" autocomplete="username" required />
+        <input type="password" name="password" id="l-password" placeholder="Password" autocomplete="current-password" required />
+        <button type="submit" class="btn-buy" id="login-btn">Log ind</button>
+      </form>
+
+      <div id="login-status" class="upload-status" style="text-align:center; margin-top: 1rem;"></div>
+    </section>
+
+    <script src="login.js"></script>
+  </body>
+</html>
