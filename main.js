@@ -100,15 +100,23 @@ function addProductToCart(id, title, price, productImg, stock) {
   cartShopBox.querySelector(".cart-remove").addEventListener("click", removeCartItem);
   cartShopBox.querySelector(".cart-quantity").addEventListener("change", quantityChanged);
 
+  updateCheckoutVisibility();
   saveCartItems();
 }
 
 // ---------- Remove / Quantity ----------
 function removeCartItem(event) {
   event.target.parentElement.remove();
+  updateCheckoutVisibility();
   updateTotal();
   saveCartItems();
   updateCartBadge();
+}
+
+function updateCheckoutVisibility() {
+  const checkoutDetails = document.querySelector("#checkout-details");
+  const hasItems = document.querySelectorAll(".cart-box").length > 0;
+  checkoutDetails.classList.toggle("visible", hasItems);
 }
 
 function quantityChanged(event) {
@@ -183,12 +191,20 @@ function loadCartItems() {
 
   updateTotal();
   updateCartBadge();
+  updateCheckoutVisibility();
 }
 // ---------- "Pay Now" () ----------
 document.querySelector(".btn-buy").addEventListener("click", async () => {
   const cartBoxes = document.querySelectorAll(".cart-box");
   if (cartBoxes.length === 0) {
     alert("Your cart is empty.");
+    return;
+  }
+
+  const customerName = document.querySelector("#customer-name").value.trim();
+  const customerAddress = document.querySelector("#customer-address").value.trim();
+  if (!customerName || !customerAddress) {
+    alert("Indtast venligst navn og adresse.");
     return;
   }
 
@@ -205,7 +221,13 @@ document.querySelector(".btn-buy").addEventListener("click", async () => {
     const res = await fetch("api/buy_products.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(items),
+      body: JSON.stringify({
+        customer: {
+          name: customerName,
+          address: customerAddress,
+        },
+        items,
+      }),
     });
     const data = await res.json();
 
@@ -216,6 +238,8 @@ document.querySelector(".btn-buy").addEventListener("click", async () => {
 
     // Tøm kurven
     document.querySelector(".cart-content").innerHTML = "";
+    document.querySelector("#customer-name").value = "";
+    document.querySelector("#customer-address").value = "";
     localStorage.removeItem("cartItems");
     localStorage.removeItem("cartTotal");
     updateTotal();

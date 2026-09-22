@@ -6,8 +6,7 @@ return [
     'user' => 'root',
     'pass' => '',
     'charset' => 'utf8mb4',
-    // Admin login - standard adgangskode er "admin123", skift den herunder.
-    // Ny hash laves med: php -r "echo password_hash('nytpassword', PASSWORD_DEFAULT);"
+    // Admin login. Skift hash og adgangskode sammen, hvis du vil bruge en anden kode.
     'admin_user' => 'admin',
-    'admin_pass_hash' => '$2y$10$fnFu/PFqA94susquHhswHusgS.9ydGisPH7yQ1U8dGD/7GHmVce9m',
+    'admin_pass_hash' => '$2y$10$ZZMrnKOBpWqsFOB6caWC8Oy4nkAwMI6.WlPoI/YBTb8KhcOdk5C2a',
 ];
